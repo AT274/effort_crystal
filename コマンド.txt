@@ -1,0 +1,156 @@
+sudo vi /var/lib/pgsql/data/pg_hba.conf
+
+mkdir myapp
+   72  php composer.phar create-project --prefer-dist cakephp/app ./myapp/
+   73  chmod 777 log/
+   74  chmod 777 .log/
+   75  cd /var/www/html/myapp
+   76  chmod 777 log/
+   77  ls
+   78  chmod 777 logs/
+   79  chmod 777tmp/
+   80  chmod 777 tmp/
+   81  chmod 777 -R tmp/
+   82  sudo chmod 777 -R tmp/
+   83  ls -la
+   84  cd config/
+   85  ll
+   86  vi app.php
+   87  psql createdatebase mydb
+   88  psql create datebase mydb
+   89  cd..
+   90  pwd
+   91  cd /home
+   92  cd /
+   93  cd..
+   94  psql create datebase mydb
+   95  psql createdatebase mydb
+   96  sudo psql createdatabase mydb
+   97  exit
+   98  psql createdatabase mydb
+   99  su
+  100  psql
+  101  psql --version
+  102  psql -l
+  103  createdb mydb
+  104  psql -l
+  105  ls
+  106  exit
+  107  cd /var/html/myapp/config
+  108  cd /var
+  109  cd /www/html
+  110  cd /www
+  111  ls
+  112  cd /var/www/html/myapp/
+  113  vi config
+  114  cd config
+  115  vi app.php
+  116  vi app
+  117  vim app.php
+  118  ll
+  119  vi app.php
+  120  mysql
+  121  sudo yum install php_pgsql php_pdo_pgsql
+  122  yum list |grep php
+  123  php -v
+  124  yum list |grep php |grep pgsql
+  125  sudo yum install php56-php-pgsql.x86_64
+  126  sudo service httpd restart
+  127  vi app.php
+  128  php -i
+  129  php -i | grep pgsql
+  130  php -i | grep pdo
+  131  yum enablerepo=remi-php56 list | grep pgsql
+  132  yum --enablerepo=remi-php56 list | grep pgsql
+  133  yum --enablerepo=remi-php56 install php-pgsql.x86_64
+  134  sudo yum --enablerepo=remi-php56 install php-pgsql.x86_64
+  135  sudo service httpd restart
+  136  cd /home
+  137  id postgres
+  138  sudo passwd postgres
+  139  su - postgres
+  140  cd /var/www/html/myapp/config
+  141  vi app.php
+  142  cd /var/www/html/myapp/comfig
+  143  cd /var/www/html/myapp/comfig/
+  144  vi app.php
+  145  sudo vi /var/lib/pgsql/data/pg_hba.conf
+  146  cd /var/lib/
+  147  ls
+  148  cd/pgsql
+  149  cd pgsql/
+  150  chmod 777 pgsql
+  151  sudo chmod 777 pgsql
+  152  cd pgsql/
+  153  ls
+  154  sudo /etc/init.d/postgresql restart
+  155  cd /home
+  156  sudo /etc/init.d/postgresql restart
+  157  createdb vagrantdb
+  158  psql vagrantdb
+  159  cd /home
+  160  cd /var/www/html/myapp/comfig/
+  161  cd /var/www/html/myapp/comfig
+  162  cd /var/www/html/myapp/
+  163  cd config
+  164  cd /home
+  165  cd /var/www/html/myapp
+  166  cd /config
+  167  cd config
+  168  vi app.php
+  169  psql
+  170  ls ../src/Controller/
+  171  yum install -y vim
+  172  sudo yum install -y vim
+  173  ls /var/lib/pgsql/10/
+  174  sudo su
+  175  sudo /etc/init.d/postgresql restart
+  176  sudo service --status-all
+  177  sudo service --status-all | grep post
+  178  psql -V
+  179  service postgresql-10 restart
+  180  sudo service postgresql-10 restart
+  181  psql -U postgres
+  182  psql -Upostgres
+  183  psql -upostgres
+  184  psql -Upostgres
+  185  psql
+  186  psql -U postgres
+  187  ls
+  188  ll
+  189  ls -la
+  190  cp .env.default .env
+  191  sudo su
+  192  sudo service postgresql-10 restart
+  193  vim app.php
+  194  psql -Upostgres
+  195  vim app.php
+  196  sudo su
+  197  sudo service postgresql-10 restart
+  198  bin/cake bake migration Products
+  199  cd /home
+  200  bin/cake bake migration Products
+  201  pwd
+  202  cd var/
+  203  cd /var
+  204  ls
+  205  cd /html
+  206  cd /www
+  207  cd www
+  208  ls
+  209  cd html
+  210  ls
+  211  cd myapp
+  212  bin/cake bake migration Products
+  213  rm /var/www/html/myapp/config/Migrations/20171205115243_Products.php
+  214  bin/cake bake migration Goals
+  215  bin/cake migrations migrate
+  216  bin/cake bake all Goals
+  217  bin/cake migrations migrate
+  218  bin/cake bake all Goals
+  219  psql -d myapp
+  220  psql
+  221  psql -U postgres
+  222  /bin/cake migrations migrate
+  223  bin/cake migrations migrate
+  224  bin/cake bake all Goals
