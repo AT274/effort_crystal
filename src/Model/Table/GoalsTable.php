@@ -63,9 +63,10 @@ class GoalsTable extends Table
             ->notEmpty('target');
 
         $validator
+            ->allowEmpty('description')
             ->scalar('description')
-            ->maxLength('description', 100)
-            ->requirePresence('description', 'create');
+            ->maxLength('description', 100);
+
 
         $validator
             ->integer('progress')

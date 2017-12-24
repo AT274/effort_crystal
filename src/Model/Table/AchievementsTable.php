@@ -65,8 +65,7 @@ class AchievementsTable extends Table
         $validator
             ->scalar('description')
             ->maxLength('description', 100)
-            ->requirePresence('description', 'create')
-            ->notEmpty('description');
+            ->allowEmpty('description');
 
         return $validator;
     }

@@ -112,20 +112,30 @@ class GoalsController extends AppController
         // return $this->redirect(['action' => 'index']);
     }
 
-    public function addOne($id = null)
+    public function addOne($id = null, $num = null)
     {
         $this->autoRender = false;
+        if (is_null($num) && !is_int($num)){
+          throw new \Exception("Error Processing Request", 1);
+        }
+
         $goal = $this->Goals->get($id);
-        $added = $goal->progress+1;
+        $added = $goal->progress+$num;
         $target = $goal->target;
         if ($added>=$target){
-          $achieve = TableRegistry::get('achievements') -> newEntity();
-          $achieve = TableRegistry::get('achievements') -> newEntity([
-            'title' => $goal->target,
+          //$achieve = TableRegistry::get('achievements') -> newEntity();
+          $this->loadModel('Achievements');
+          $achieve = $this->Achievements-> newEntity([
+            'title' => $goal->title,
             'description' => $goal->description,
             'target'=> $goal->target
           ]);
-          TableRegistry::get('achievements') -> save($achieve);
+          $this->log($this->Achievements->find()->all());
+          $save = $this->Achievements -> save($achieve);
+          $this->log($save);
+
+          $this->log($this->Achievements->find()->all());
+
           header('Content-type: application/json');
           echo json_encode(["progress"=>"achieve"]);
         }else{

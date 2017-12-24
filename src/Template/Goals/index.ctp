@@ -11,7 +11,9 @@
   <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
   <script type="text/javascript" src="js/jquery.yycountdown.min.js"></script>
 </head>
-
+<script>
+  obj = {};
+</script>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
@@ -27,12 +29,12 @@
 
     <div class="row">
     <?php foreach ($goals as $goal): ?>
-      <div class="col-md-6 delete-target-<?= $goal->id ?>">
+      <div class="col-md-4 delete-target-<?= $goal->id ?>">
         <div class="row">
           <div class="col-md-2 add" id="add<?=$goal->id?>" data-triangle="<?= $goal->id ?>" style="text-align:center">
             <img src = "img/addButton.png" width="500px" height="500px"/>
             <div id="description<?=$goal->id?>" class="box" data-tooltip="<?=$goal->description?>">
-              <img src = "img/kuwasiku.png" width="500px" height="500px"/>
+              <img src = "img/reader.png" width="500px" height="500px"/>
               <script>
                 $(function(){
                   $('#description<?=$goal->id?>').darkTooltip({
@@ -57,7 +59,6 @@
                           deletable = data.status;
                           console.log("deletable:" + deletable);
                           if (deletable == "true") {
-                            console.log("でなーい！");
                             $('.delete-target-<?=$goal->id?>').hide();
                           } else {
                             console.log("done消去に失敗しました");
@@ -73,6 +74,7 @@
             </div>
           </div>
           <div id="gauge<?=$goal->id?>" class="col-md-10 box" style="text-align:center">
+            <span class="progress-<?=$goal->id?>" style="display: none"><?=$goal->progress?></span>
             <script>
                 g<?=$goal->id?> = new JustGage({
                 id: "gauge<?=$goal->id?>",
@@ -84,9 +86,32 @@
                 relativeGaugeSize:true,
                 counter:true,
               });
-              gauge75.prototype.refresh(100,1000);
+
+              obj[<?=$goal->id?>] =   g<?=$goal->id?>;
             </script>
+              <div id="slidevalue<?=$goal->id?>"></div>
+              <div id="slider<?=$goal->id?>"></div>
             <div id="countdown<?=$goal->id?>" class="timer">
+              <script>
+                var element<?=$goal->id?> = document.getElementById("slider<?=$goal->id?>");
+                $(function(){
+                  noUiSlider.create(element<?=$goal->id?>, {
+                  	start: [1],
+                    step:1,
+                    connect: [true,false],
+                  	range: {
+                  		'min': [0],
+                  		'max': [<?= $goal->target?>],
+                  	}
+                  });
+                  var slidevalue<?=$goal->id?> = document.getElementById('slidevalue<?=$goal->id?>');
+                  element<?=$goal->id?>.noUiSlider.on('update', function( values, handle ) {
+                              $('#slidevalue<?=$goal->id?>').text(parseInt(values[handle]))
+                });
+                })
+
+
+              </script>
               <script>
                 $('#countdown<?=$goal->id?>').yycountdown({
                   endDateTime   : '<?=$goal->due_date?>',  //カウントダウン終了日時
@@ -99,7 +124,6 @@
                         deletable = data.status;
                         console.log("deletable:" + deletable);
                         if (deletable == "true") {
-                          console.log("でなーい！");
                           $('.delete-target-<?=$goal->id?>').hide();
                         } else {
                           console.log("done消去に失敗しました");
@@ -134,3 +158,5 @@
 <?= $this->Html->script("jquery.darktooltip") ?>
 <?= $this->Html->css('darktooltip') ?>
 <?= $this->Html->script("justgage")?>
+<?= $this->Html->script('nouislider') ?>
+<?= $this->Html->css('nouislider') ?>

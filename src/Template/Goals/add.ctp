@@ -10,6 +10,7 @@
 </head>
 <?= $this->Html->css('jquery.datetimepicker') ?>
 <?= $this->Html->script("jquery.datetimepicker.full.min") ?>
+<?= $this->Html->css("required")?>
 <script>
 
   $(function(){
@@ -31,13 +32,16 @@
     <?= $this->Form->create($goal) ?>
     <fieldset>
         <legend><?= __('Add Goal') ?></legend>
-        <?php
-            echo $this->Form->control('title');
-            echo $this->Form->control('target');
-            echo $this->Form->control('progress');
-            echo $this->Form->control('description');
-            echo $this->Form->hidden('due_date', ['id' => 'datetimepicker']);
-        ?>
+        <?php echo $this->Form->control('title');?>
+        <div class="row">
+          <div class="col-md-4">  <?php echo $this->Form->control('target');?></div>
+          <div class="col-md-4">  <?php echo $this->Form->control('progress');?> </div>
+          <div class="col-md-4" > <span class="date-required" style="font-weight: bold; font-size: 0.875rem;">Due date</span> <?php echo $this->Form->hidden('due_date', ['id' => 'datetimepicker' ,'class'=>'required']); ?> </div>
+        </div>
+        <span style="font-weight: bold; font-size: 0.875rem;">Description</span>
+        <?php    echo $this->Form->textarea('description'); ?>
+
+
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
     <?= $this->Form->end() ?>

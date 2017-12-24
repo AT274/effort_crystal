@@ -2,7 +2,9 @@ $(function() {
   $('.add').on("click", function() {
     console.log("ok");
     var id = $(this).data('triangle')
-    $.ajax('http://192.168.33.10/myapp/goals/addOne/' + id, {
+    var value = $('#slidevalue' + id).text()
+    console.log(value)
+    $.ajax('http://192.168.33.10/myapp/goals/addOne/' + id + '/' + value, {
         type: 'get'
       })
       .done(function(data) {
@@ -31,7 +33,7 @@ $(function() {
               console.log("消去に失敗しました");
             });
         } else {
-          console.log($(this).siblings('#gauge' + id));
+          obj[id].refresh(progress, obj[id].max);
           $('.progress-' + id).text(progress);
         }
       })
